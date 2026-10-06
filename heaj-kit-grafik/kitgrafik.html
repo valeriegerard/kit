@@ -456,13 +456,14 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
 .dl-option-size{font-size:12px;color:var(--ink-faint);}
 
 /* ============ HOME / HERO ============ */
-.hero{padding:56px 0 48px;position:relative;overflow:hidden;}
-.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;grid-template-areas:"text frise" "actions frise";gap:16px 40px;align-items:center;}
-.hero-text{grid-area:text;}
+.hero{padding:56px 0 41px;position:relative;overflow:hidden;}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;grid-template-rows:1fr auto auto;grid-template-areas:"frise-top frise" "text frise" "actions frise";gap:0 40px;align-items:center;}
+.hero-text{grid-area:text;align-self:end;}
 .hero-frise{grid-area:frise;}
-.hero-actions{grid-area:actions;}
+.hero-actions{grid-area:actions;align-self:start;}
 @media (max-width:860px){
-  .hero-grid{grid-template-columns:1fr 100px;grid-template-areas:"text frise" "actions actions";gap:10px 16px;align-items:start;}
+  .hero-grid{grid-template-columns:1fr 100px;grid-template-rows:auto auto;grid-template-areas:"text frise" "actions actions";gap:0 16px;align-items:start;}
+  .hero-text{align-self:end;} .hero-actions{align-self:start;} .hero-frise{align-self:start;}
 }
 @media (max-width:420px){
   .hero-grid{grid-template-columns:1fr 76px;}
@@ -470,12 +471,13 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
 .hero-eyebrow{display:flex;align-items:center;gap:8px;margin-bottom:16px;}
 .hero h1{font-size:56px;line-height:.98;margin-bottom:18px;}
 @media (max-width:640px){ .hero h1{font-size:38px;} }
-.hero p{font-size:16.5px;color:var(--ink-soft);max-width:46ch;line-height:1.6;margin-bottom:26px;}
+.hero p{font-size:16.5px;color:var(--ink-soft);max-width:46ch;line-height:1.6;margin-bottom:0;}
 @media (max-width:860px){ .hero p{margin-bottom:0;} }
-.hero-actions{display:flex;gap:10px;flex-wrap:wrap;}
-@media (max-width:860px){ .hero-actions{margin-top:18px;} }
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:calc(2 * 1.6 * 16.5px);}
+@media (max-width:640px){ .hero-actions{margin-top:28px;} }
 .hero-frise{display:flex;justify-content:center;align-items:center;}
 .hero-frise svg{width:100%;max-width:260px;height:auto;}
+@media (min-width:861px){ .hero-frise svg{width:auto;max-width:100%;height:clamp(300px,34vw,440px);} .hero-grid{align-items:center;} .hero-text{align-self:end;} }
 @media (max-width:860px){ .hero-frise svg{max-width:100px;} }
 @media (max-width:420px){ .hero-frise svg{max-width:76px;} }
 
